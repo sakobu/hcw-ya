@@ -1,0 +1,56 @@
+{
+  "name": "rpo-suite",
+  "version": "0.1.0",
+  "description": "Spacecraft relative motion propagation library implementing Yamanaka-Ankersen and Clohessy-Wiltshire algorithms for Rendezvous and Proximity Operations",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "demo": "bun run examples/basic-propagation.ts",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "orbital-mechanics",
+    "spacecraft",
+    "rendezvous",
+    "proximity-operations",
+    "yamanaka-ankersen",
+    "clohessy-wiltshire",
+    "rpo",
+    "astrodynamics"
+  ],
+  "author": "Sarkis Melkonian",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "tsup": "^8.5.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
