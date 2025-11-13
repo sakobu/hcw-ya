@@ -1,6 +1,6 @@
 {
   "name": "rpo-suite",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Spacecraft relative motion propagation library implementing Yamanaka-Ankersen and Clohessy-Wiltshire algorithms for Rendezvous and Proximity Operations",
   "author": "Sarkis Melkonian",
   "license": "MIT",
