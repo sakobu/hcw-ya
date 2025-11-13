@@ -20,24 +20,36 @@ npm install rpo-suite
 ## Usage
 
 ```typescript
-import { propagateYA, trueAnomalyAtTime } from "rpo-suite";
+import {
+  propagateYA,
+  trueAnomalyAtTime,
+  type OrbitalElements,
+  type RelativeState,
+} from "rpo-suite";
 
-const elements = {
+const elements: OrbitalElements = {
   eccentricity: 0.1,
   gravitationalParameter: 3.986004418e14,
   angularMomentum: 5.409e10,
 };
 
-const initialState = {
-  position: [100, 200, 50],
-  velocity: [0.5, -0.2, 0.1],
+const initialState: RelativeState = {
+  position: [100, 200, 50] as const,
+  velocity: [0.5, -0.2, 0.1] as const,
 };
 
 const theta0 = 0;
 const deltaTime = 1000;
 const thetaF = trueAnomalyAtTime(elements, theta0, deltaTime);
 
-const finalState = propagateYA(initialState, elements, theta0, thetaF, deltaTime, "RIC");
+const finalState = propagateYA(
+  initialState,
+  elements,
+  theta0,
+  thetaF,
+  deltaTime,
+  "RIC"
+);
 ```
 
 ## API Reference
@@ -194,6 +206,7 @@ Low-level functions corresponding to auxiliary variables in Yamanaka & Ankersen 
 Two local-orbital reference frames are supported:
 
 **RIC**: Radial, In-track, Cross-track
+
 - R: Radial (away from Earth center)
 - I: In-track (along velocity)
 - C: Cross-track (normal to orbital plane)
@@ -213,7 +226,11 @@ import { deriveAngularMomentum } from "rpo-suite";
 
 const elements = {
   eccentricity: 0.0001084,
-  angularMomentum: deriveAngularMomentum(0.0001084, 15.54225995, 3.986004418e14),
+  angularMomentum: deriveAngularMomentum(
+    0.0001084,
+    15.54225995,
+    3.986004418e14
+  ),
   gravitationalParameter: 3.986004418e14,
 };
 ```
